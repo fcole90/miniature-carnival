@@ -2,6 +2,10 @@ name: Build and Deploy Personal Website
 on: [push, pull_request]
 jobs:
   build_deploy:
+    permissions:
+      contents: write
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
     name: Build and Deploy
     runs-on: ubuntu-latest
     steps:
