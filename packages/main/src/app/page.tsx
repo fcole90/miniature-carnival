@@ -35,7 +35,7 @@ interface FlippableComponentProps {
  * @framerSupportedLayoutHeight fixed
  */
 
-export function withClick(Component: React.FC<FlippableComponentProps>) {
+function withClick(Component: React.FC<FlippableComponentProps>) {
   const InnerComponent: React.FC<{
     width: number | string;
     height: number | string;
