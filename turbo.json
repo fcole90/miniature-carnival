@@ -1,9 +1,0 @@
-{
-  "$schema": "https://turbo.build/schema.json",
-  "dangerouslyDisablePackageManagerCheck": true,
-  "ui": "tui",
-  "tasks": {
-    "lint": {},
-    "lint:fix": {}
-  }
-}
