@@ -29,6 +29,7 @@ const Home: React.FC = () => {
             >
               <Stack flex={1}>
                 <Logo />
+                <Text>Hello</Text>
               </Stack>
               <Menu />
             </ContentFittedStack>
