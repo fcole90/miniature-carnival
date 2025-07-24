@@ -1,6 +1,6 @@
 'use client';
 
-import type { CSSProperties, MouseEvent } from 'react';
+import type { CSSProperties } from 'react';
 import { motion, useSpring } from 'motion/react';
 import React, { useState, useRef, useEffect } from 'react';
 import StackLayout from '@swiftpost/elysium/layouts/StackLayout';
@@ -13,7 +13,6 @@ import ps5boxCiv from './ps5boxCiv.webp';
 import albertoAngela from './albertoAngela.jpg';
 import winter from './winter.gif';
 import Image from 'next/image';
-import Link from 'next/link';
 
 //Spring animation parameters
 const spring = {
@@ -47,8 +46,8 @@ export function withClick(Component: React.FC<FlippableComponentProps>) {
       setIsFlipped((prevState) => !prevState);
     };
 
-    const [rotateXaxis, setRotateXaxis] = useState(0);
-    const [rotateYaxis, setRotateYaxis] = useState(0);
+    const [rotateXaxis, _setRotateXaxis] = useState(0);
+    const [rotateYaxis, _setRotateYaxis] = useState(0);
     const ref = useRef<HTMLDivElement>(null);
 
     // const handleMouseMove = (event: MouseEvent) => {
@@ -246,10 +245,11 @@ const MyCard: React.FC<FlippableComponentProps> = ({
         height="auto"
         src="https://www.youtube.com/embed/NXdqtwPpB3g?si=EV5lQ-CHCCXifmUY"
         title="YouTube video player"
-        frameborder="0"
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
+        frameBorder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share, fullscreen"
-        referrerpolicy="strict-origin-when-cross-origin"
-        allowfullscreen
+        referrerPolicy="strict-origin-when-cross-origin"
+        allowFullScreen
       ></iframe>
       <Text color={blue[900]} align="center">
         <a href="https://www.youtube.com/watch?v=NXdqtwPpB3g" target="__blank">
