@@ -34,6 +34,13 @@ export const eslintBaseConfig = tseslint.config(
           ignoreRestSiblings: true,
         },
       ],
+      '@typescript-eslint/restrict-template-expressions': [
+        'error',
+        {
+          allowNumber: true,
+          allowNullish: true,
+        },
+      ],
       'react/prop-types': 'off',
     },
     languageOptions: {
