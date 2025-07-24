@@ -6,6 +6,14 @@ import React, { useState, useRef, useEffect } from 'react';
 import StackLayout from '@swiftpost/elysium/layouts/StackLayout';
 import Stack from '@swiftpost/elysium/ui/Stack';
 import Text from '@swiftpost/elysium/ui/Text';
+import { blue, red } from '@mui/material/colors';
+
+import bergen from './bergen.jpg';
+import ps5boxCiv from './ps5boxCiv.webp';
+import albertoAngela from './albertoAngela.jpg';
+import winter from './winter.gif';
+import Image from 'next/image';
+import Link from 'next/link';
 
 //Spring animation parameters
 const spring = {
@@ -164,6 +172,98 @@ const MyCard: React.FC<FlippableComponentProps> = ({
   variant,
 }) => {
   const [number, setNumber] = useState(0);
+
+  const list = [
+    <Stack key="bergen" position={'relative'}>
+      <Image alt="bergen" src={bergen} style={{ maxWidth: '100%' }}></Image>
+      <Text
+        sx={{ color: red['A700'], margin: 'auto' }}
+        position="absolute"
+        margin="auto"
+        top="5rem"
+        align="center"
+        width="100%"
+        variant="h2"
+      >
+        Tantissimi Auguri!
+      </Text>
+    </Stack>,
+    <Stack key="winter">
+      <Image
+        alt="winter"
+        src={winter}
+        style={{ maxWidth: '100%', height: 'auto' }}
+      ></Image>
+    </Stack>,
+    <Stack key="question">
+      <Text align="center" color={blue[900]} variant="h3">
+        {"Come fare quando l'inverno arriva?"}
+      </Text>
+    </Stack>,
+    <Stack key="roma" position={'relative'}>
+      <Image
+        alt="albertoAngela"
+        src={albertoAngela}
+        style={{ maxWidth: '100%', height: 'auto' }}
+      ></Image>
+      <Text
+        sx={{ color: blue[900], margin: 'auto' }}
+        margin="auto"
+        align="center"
+        width="100%"
+        variant="h2"
+      >
+        {"Sempre pensando all'Impero Romano?"}
+      </Text>
+    </Stack>,
+    <Stack key="ps5box" position={'relative'}>
+      <Image
+        alt="albertoAngela"
+        src={ps5boxCiv}
+        style={{ maxWidth: '100%', height: 'auto' }}
+      ></Image>
+      <Text
+        sx={{ color: blue[900], margin: 'auto' }}
+        margin="auto"
+        align="center"
+        width="100%"
+        variant="h3"
+      >
+        {'Magari anche altri imperi!'}{' '}
+        <Text
+          color={red['A700']}
+          component="span"
+          variant="h3"
+          fontWeight="bold"
+        >
+          Auguriii!
+        </Text>
+      </Text>
+    </Stack>,
+    <Stack key="trailer">
+      <iframe
+        width="100%"
+        height="auto"
+        src="https://www.youtube.com/embed/NXdqtwPpB3g?si=EV5lQ-CHCCXifmUY"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share, fullscreen"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+      ></iframe>
+      <Text color={blue[900]} align="center">
+        <a href="https://www.youtube.com/watch?v=NXdqtwPpB3g" target="__blank">
+          Trailer Civilization 7
+        </a>
+      </Text>
+    </Stack>,
+    <Stack key="end">
+      <Text fontWeight="bold" color={blue[900]}>
+        Ricarica la pagina per ricominciare!
+      </Text>
+    </Stack>,
+  ];
+
   return (
     <Stack
       alignItems="center"
@@ -183,8 +283,13 @@ const MyCard: React.FC<FlippableComponentProps> = ({
       }}
     >
       {variant === 'Front' ?
-        <Text>Front: {number}</Text>
-      : <Text>Back: {number + 1}</Text>}
+        <Stack maxWidth="100%" maxHeight="100%">
+          {list[Math.min(number, list.length - 1)]}
+        </Stack>
+      : <Stack maxWidth="100%" maxHeight="100%">
+          {list[Math.min(number + 1, list.length - 1)]}
+        </Stack>
+      }
     </Stack>
   );
 };
